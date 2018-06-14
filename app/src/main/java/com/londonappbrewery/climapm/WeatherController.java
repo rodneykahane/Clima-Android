@@ -75,7 +75,7 @@ public class WeatherController extends AppCompatActivity {
         Log.d("Clima", "onResume() called");
         Log.d("Clima", "Getting weather for current location");
         getWeatherForCurrentLocation();
-    }
+    }//end onResume
 
 
     // TODO: Add getWeatherForNewCity(String city) here:
@@ -157,8 +157,8 @@ public class WeatherController extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d("Clima","Success! JSON: "+response.toString());
 
-
                 WeatherDataModel weatherData = WeatherDataModel.fromJSON(response);//passing JSON weather info straight to weatherdatamodel
+                updateUI(weatherData);
             }
 
 
@@ -174,7 +174,13 @@ public class WeatherController extends AppCompatActivity {
     }//end letsDoSomeNetworking
 
     // TODO: Add updateUI() here:
+    private void updateUI(WeatherDataModel weather){
+       mTemperatureLabel.setText(weather.getTemperature());
+       mCityLabel.setText(weather.getCity());
 
+       int resourceID = getResources().getIdentifier(weather.getIconName(),"drawable",getPackageName());
+       mWeatherImage.setImageResource(resourceID);
+    }
 
 
     // TODO: Add onPause() here:

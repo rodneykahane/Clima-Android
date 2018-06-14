@@ -19,7 +19,6 @@ public class WeatherDataModel {
 
             weatherData.mCity = jsonObject.getString("name");
             weatherData.mCondition = jsonObject.getJSONArray("weather").getJSONObject(0).getInt("id");
-
             weatherData.mIconName = updateWeatherIcon(weatherData.mCondition);
 
             double tempResult = (jsonObject.getJSONObject("main").getDouble("temp")-273.15)*9.0/5.0+32;//temp comes in as kelvin, converting to celsius then to fahrenheit
@@ -67,17 +66,18 @@ public class WeatherDataModel {
     }
 
     // TODO: Create getter methods for temperature, city, and icon name:
-
-
     public String getTemperature() {
+
         return mTemperature+"°";
     }
 
     public String getCity() {
+
         return mCity;
     }
 
     public String getIconName() {
+
         return mIconName;
     }
-}
+}//end class
