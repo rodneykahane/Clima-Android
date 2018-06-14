@@ -157,7 +157,11 @@ public class WeatherController extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d("Clima","Success! JSON: "+response.toString());
 
+
+                WeatherDataModel weatherData = WeatherDataModel.fromJSON(response);//passing JSON weather info straight to weatherdatamodel
             }
+
+
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject response) {
