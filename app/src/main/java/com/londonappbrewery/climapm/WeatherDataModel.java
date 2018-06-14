@@ -1,12 +1,30 @@
 package com.londonappbrewery.climapm;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class WeatherDataModel {
 
     // TODO: Declare the member variables here
+    private String mTemperature;
+    private String mCity;
+    private String mIconName;
+    private int mCondition;
 
 
     // TODO: Create a WeatherDataModel from a JSON:
+    public static WeatherDataModel fromJSON(JSONObject jsonObject) {
+        try {
+            WeatherDataModel weatherData = new WeatherDataModel();
 
+            weatherData.mCity = jsonObject.getString("name");
+
+            return weatherData;
+        } catch (JSONException e){
+            e.printStackTrace();
+            return null;
+    }//end try
+    }//end WeatherDataModel
 
     // TODO: Uncomment to this to get the weather image name from the condition:
 //    private static String updateWeatherIcon(int condition) {
